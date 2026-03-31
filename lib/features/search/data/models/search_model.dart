@@ -3,23 +3,22 @@ import 'package:equatable/equatable.dart';
 class SearchModel extends Equatable {
   final String fromCity;
   final String toCity;
-  final String tripDate;
+  final DateTime? tripDate; // تغيير لنوع DateTime
   final int passengersCount;
-  final bool isVip; // true يعني VIP، و false يعني عادي
+  final bool isVip;
 
   const SearchModel({
-    this.fromCity = 'دمشق', // قيم افتراضية مشان أول ما يفتح التطبيق
+    this.fromCity = 'دمشق',
     this.toCity = 'حلب',
-    this.tripDate = 'اختر التاريخ',
+    this.tripDate, 
     this.passengersCount = 1,
-    this.isVip = false, 
+    this.isVip = false,
   });
 
-  // بتسمحلنا نعدل قيمة وحدة (مثلاً نزيد عدد الركاب) بدون ما نمسح باقي البيانات (مثل المدن اللي اختارها)
   SearchModel copyWith({
     String? fromCity,
     String? toCity,
-    String? tripDate,
+    DateTime? tripDate,
     int? passengersCount,
     bool? isVip,
   }) {
@@ -32,13 +31,6 @@ class SearchModel extends Equatable {
     );
   }
 
-  //   بتخلي البلوك يعرف إذا في قيمة تغيرت مشان يحدث الشاشة
   @override
-  List<Object?> get props => [
-        fromCity,
-        toCity,
-        tripDate,
-        passengersCount,
-        isVip,
-      ];
+  List<Object?> get props => [fromCity, toCity, tripDate, passengersCount, isVip];
 }

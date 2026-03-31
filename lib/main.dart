@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'features/search/presentation/screens/search_screen.dart';
+import 'package:togo/features/search/presentation/main_screen.dart';
 
 void main() {
-  runApp(const TogoApp());
+  runApp(const ToGoApp());
 }
 
-class TogoApp extends StatelessWidget {
-  const TogoApp({super.key});
+class ToGoApp extends StatelessWidget {
+  const ToGoApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, // شيل علامة الـ Debug الحمراء
-      title: 'TOGO App',
+      debugShowCheckedModeBanner: false,
+      title: 'ToGo',
       theme: ThemeData(
-        fontFamily: 'Cairo', // اختياري: لو حابب تستخدم خط عربي مرتب مثل Cairo
+        // عشان يطابق ألوانك الداكنة
+        scaffoldBackgroundColor: const Color(0xFF121212), 
       ),
-      home: const SearchScreen(), // هون بننادي الشاشة اللي برمجناها
+      home: const MainScreen(), // هون السر! بنستدعي الشاشة اللي فيها الشريط السفلي
     );
   }
 }
