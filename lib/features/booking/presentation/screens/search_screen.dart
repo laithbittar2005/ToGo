@@ -31,7 +31,6 @@ class SearchScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: const Color(0xFF2C2C2E),
                     borderRadius: BorderRadius.circular(25),
-                    // إضافة ظل خفيف لإعطاء عمق للتصميم
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.2),

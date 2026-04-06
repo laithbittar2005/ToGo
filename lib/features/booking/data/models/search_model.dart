@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 class SearchModel extends Equatable {
   final String fromCity;
   final String toCity;
-  final DateTime? tripDate; // تغيير لنوع DateTime
+  final DateTime? tripDate; 
   final int passengersCount;
   final bool isVip;
 

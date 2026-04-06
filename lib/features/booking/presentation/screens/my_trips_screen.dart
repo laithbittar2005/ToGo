@@ -22,7 +22,7 @@ class MyTripsScreen extends StatelessWidget {
           ),
           body: bookingData.tripDate == null 
               ? const Center(child: Text("لا توجد رحلات محجوزة حالياً", style: TextStyle(color: Colors.grey, fontFamily: 'Cairo')))
-              : MainTripCard(bookingData: bookingData), // استدعاء الكارد الكبير
+              : MainTripCard(bookingData: bookingData), // استدعاء الكارد وتمرير بيانات الرحلة المحجوزة
         );
       },
     );

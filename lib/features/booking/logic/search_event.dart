@@ -23,7 +23,7 @@ class UpdateToCityEvent extends SearchEvent {
 class SwapCitiesEvent extends SearchEvent {}
 
 class UpdateDateEvent extends SearchEvent {
-  final DateTime date; // تغيير لنوع DateTime
+  final DateTime date; 
   const UpdateDateEvent(this.date);
   @override
   List<Object?> get props => [date];

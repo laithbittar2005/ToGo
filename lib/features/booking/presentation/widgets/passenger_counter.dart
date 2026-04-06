@@ -11,7 +11,6 @@ class PassengerCounter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // شلنا const من هون لأنها بتستخدم AppColors.textWhite اللي صار متغير
         Text(
           "مسافر", 
           style: TextStyle(
@@ -21,13 +20,13 @@ class PassengerCounter extends StatelessWidget {
             fontFamily: 'Cairo'
           )
         ),
-        const Spacer(), // هي بتضل const عادي لأن ما فيها ألوان
+        const Spacer(),  
         _counterBtn(Icons.remove, () => count > 1 ? onUpdate(count - 1) : null),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Text(
             "$count", 
-            style: TextStyle( // شلنا const من هون
+            style: TextStyle( 
               color: AppColors.textWhite, 
               fontSize: 18, 
               fontWeight: FontWeight.bold
@@ -49,8 +48,8 @@ class PassengerCounter extends StatelessWidget {
           border: Border.all(color: Colors.white10), 
           borderRadius: BorderRadius.circular(8)
         ),
-        child: Icon(icon, color: AppColors.textWhite, size: 18), // شلنا const من هون
+        child: Icon(icon, color: AppColors.textWhite, size: 18), 
       ),
     );
-  }
+  } 
 }

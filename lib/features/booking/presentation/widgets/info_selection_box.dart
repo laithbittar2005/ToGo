@@ -22,7 +22,7 @@ class InfoSelectionBox extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-          color: AppColors.fieldBg, // شلنا const من الـ BoxDecoration
+          color: AppColors.fieldBg, 
           borderRadius: BorderRadius.circular(15),
         ),
         child: Row(
@@ -35,7 +35,7 @@ class InfoSelectionBox extends StatelessWidget {
                 children: [
                   Text(
                     title, 
-                    style: TextStyle( // شلنا const
+                    style: TextStyle( 
                       color: AppColors.textGrey, 
                       fontSize: 11, 
                       fontFamily: 'Cairo'

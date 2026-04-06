@@ -38,7 +38,6 @@ class TripStatusSection extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,  
       children: [
-        // 1. الأيقونة أولاً: عشان تطلع "يمين" بالعربي
         Padding(
           padding: const EdgeInsets.only(top: 2), 
           child: Icon(icon, color: AppColors.primaryYellow, size: 18),
@@ -46,7 +45,6 @@ class TripStatusSection extends StatelessWidget {
         
         const SizedBox(width: 12),
 
-        // 2. النص ثانياً: بياخد المساحة المتبقية لليسار
         Expanded(
           child: Text(
             text,

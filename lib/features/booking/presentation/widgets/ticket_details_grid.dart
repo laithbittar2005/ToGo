@@ -13,7 +13,7 @@ class TicketDetailsGrid extends StatelessWidget {
         Row(
           children: [
             Expanded(child: _item(Icons.access_time, "الوقت", time)),
-            const SizedBox(width: 10), // مسافة صغيرة مرنة
+            const SizedBox(width: 10),
             Expanded(child: _item(Icons.calendar_today, "التاريخ", date)),
           ],
         ),
@@ -31,12 +31,11 @@ class TicketDetailsGrid extends StatelessWidget {
   }
 
   Widget _item(IconData icon, String label, String val) => Container(
-    // إضافة Padding بسيط عشان العناصر ما تلزق ببعض بالشاشات الضيقة
     padding: const EdgeInsets.symmetric(horizontal: 5),
     child: Row(
-      mainAxisAlignment: MainAxisAlignment.end, // للحفاظ على الاتجاه العربي
+      mainAxisAlignment: MainAxisAlignment.end, 
       children: [
-        Expanded( // لجعل النصوص مرنة داخل الآيتم نفسه
+        Expanded( 
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [

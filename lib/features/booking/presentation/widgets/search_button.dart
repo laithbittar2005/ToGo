@@ -21,7 +21,6 @@ class _SearchButtonState extends State<SearchButton> {
   Widget build(BuildContext context) {
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) => ElevatedButton(
-        // إذا عم يحمل، منوقف الضغط عشان ما يتدبل الحجز
         onPressed: _isLoading ? null : () async {
           final model = state.searchModel;
           
@@ -33,7 +32,7 @@ class _SearchButtonState extends State<SearchButton> {
             // 1. تشغيل دائرة التحميل
             setState(() => _isLoading = true);
             
-            // 2. تأخير وهمي لمدة ثانيتين (Fake Loading)
+            // 2. تأخير وهمي لمدة ثانيتين 
             await Future.delayed(const Duration(seconds: 2));
             
             // 3. إيقاف التحميل والانتقال للصفحة التانية
