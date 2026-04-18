@@ -1,11 +1,10 @@
-// features/search/presentation/widgets/search_button.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:togo/features/booking/presentation/screens/main_screen.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/app_utils.dart';
-import '../../logic/search_bloc.dart';
-import '../../logic/search_state.dart';
-import '../main_screen.dart';       
+import '../bloc/booking_bloc.dart'; // تأكدت من المسار
+import '../bloc/booking_state.dart';
 
 class SearchButton extends StatefulWidget {
   const SearchButton({super.key});
@@ -15,29 +14,28 @@ class SearchButton extends StatefulWidget {
 }
 
 class _SearchButtonState extends State<SearchButton> {
-  bool _isLoading = false; // المتغير المسؤول عن إظهار التحميل
+  bool _isLoading = false; 
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchBloc, SearchState>(
+    return BlocBuilder<BookingBloc, BookingState>(
       builder: (context, state) => ElevatedButton(
         onPressed: _isLoading ? null : () async {
-          final model = state.searchModel;
+          final model = state.bookingModel; 
           
           if (model.fromCity.isEmpty || model.toCity.isEmpty) {
             AppUtils.showError(context, "يرجى تحديد الانطلاق والوجهة");
           } else if (model.tripDate == null) {
             AppUtils.showError(context, "يرجى اختيار التاريخ");
           } else {
-            // 1. تشغيل دائرة التحميل
             setState(() => _isLoading = true);
             
-            // 2. تأخير وهمي لمدة ثانيتين 
+            // محاكاة عملية الحجز
             await Future.delayed(const Duration(seconds: 2));
             
-            // 3. إيقاف التحميل والانتقال للصفحة التانية
             if (mounted) {
               setState(() => _isLoading = false);
+              
               context.read<BottomNavCubit>().changeTab(1);
               
               ScaffoldMessenger.of(context).showSnackBar(
@@ -54,8 +52,8 @@ class _SearchButtonState extends State<SearchButton> {
           backgroundColor: AppColors.primaryYellow,
           minimumSize: const Size(double.infinity, 60),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          disabledBackgroundColor: AppColors.primaryYellow.withOpacity(0.6), // عشان ما يختفي اللون وقت التحميل
         ),
-        // 4. تبديل محتوى الزر بين النص ودائرة التحميل
         child: _isLoading
             ? const SizedBox(
                 height: 25,

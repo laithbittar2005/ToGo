@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart'; // ضفنا مكتبة البلوك
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:togo/core/theme/app_colors.dart'; // ملف الألوان تبعك
-import 'package:togo/features/booking/logic/theme_cubit.dart';
-import 'package:togo/features/booking/presentation/main_screen.dart';
+import 'package:togo/core/theme/theme_cubit.dart';
+import 'package:togo/features/booking/presentation/screens/main_screen.dart';
 
 void main() {
   runApp(const ToGoApp());

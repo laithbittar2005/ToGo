@@ -1,28 +1,28 @@
 import 'package:equatable/equatable.dart';
 
-class SearchModel extends Equatable {
+class BookingModel extends Equatable {
   final String fromCity;
   final String toCity;
-  final DateTime? tripDate; 
+  final DateTime? tripDate;
   final int passengersCount;
   final bool isVip;
 
-  const SearchModel({
-    this.fromCity = 'دمشق',
-    this.toCity = 'حلب',
-    this.tripDate, 
+  const BookingModel({
+    this.fromCity = '',
+    this.toCity = '',
+    this.tripDate,
     this.passengersCount = 1,
     this.isVip = false,
   });
 
-  SearchModel copyWith({
+  BookingModel copyWith({
     String? fromCity,
     String? toCity,
     DateTime? tripDate,
     int? passengersCount,
     bool? isVip,
   }) {
-    return SearchModel(
+    return BookingModel(
       fromCity: fromCity ?? this.fromCity,
       toCity: toCity ?? this.toCity,
       tripDate: tripDate ?? this.tripDate,
@@ -32,5 +32,11 @@ class SearchModel extends Equatable {
   }
 
   @override
-  List<Object?> get props => [fromCity, toCity, tripDate, passengersCount, isVip];
+  List<Object?> get props => [
+        fromCity,
+        toCity,
+        tripDate,
+        passengersCount,
+        isVip,
+      ];
 }

@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
-import '../../logic/search_bloc.dart';
-import '../../logic/search_event.dart';
-import '../../logic/search_state.dart';
+import '../bloc/booking_bloc.dart';
+import '../bloc/booking_state.dart';
+import '../bloc/booking_event.dart';
 
 class TripTypeToggle extends StatelessWidget {
   const TripTypeToggle({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchBloc, SearchState>(
+    return BlocBuilder<BookingBloc, BookingState>(
       builder: (context, state) {
-        final isVip = state.searchModel.isVip;
+        final isVip = state.bookingModel.isVip;
         
         return Container(
           decoration: BoxDecoration(
@@ -26,13 +26,13 @@ class TripTypeToggle extends StatelessWidget {
                 context: context,
                 label: AppStrings.normal,
                 isSelected: !isVip,
-                onTap: () => context.read<SearchBloc>().add(const UpdateTripTypeEvent(false)),
+                onTap: () => context.read<BookingBloc>().add(const UpdateTripTypeEvent(false)),
               ),
               _buildToggleButton(
                 context: context,
                 label: AppStrings.vip,
                 isSelected: isVip,
-                onTap: () => context.read<SearchBloc>().add(const UpdateTripTypeEvent(true)),
+                onTap: () => context.read<BookingBloc>().add(const UpdateTripTypeEvent(true)),
               ),
             ],
           ),
@@ -64,6 +64,7 @@ class TripTypeToggle extends StatelessWidget {
               style: TextStyle(
                 color: isSelected ? Colors.black : AppColors.textGrey,
                 fontWeight: FontWeight.bold,
+                fontFamily: 'Cairo',
               ),
             ),
           ),

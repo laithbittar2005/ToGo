@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'screens/search_screen.dart'; 
-import 'screens/my_trips_screen.dart'; 
-import '../logic/search_bloc.dart';
-import '../../../../core/theme/app_colors.dart';    
+import 'booking_screen.dart'; 
+import 'my_trips_screen.dart'; 
+import '../bloc/booking_bloc.dart';
+import '../../../../../core/theme/app_colors.dart';    
 class BottomNavCubit extends Cubit<int> {
   BottomNavCubit() : super(2); 
   void changeTab(int index) => emit(index);
@@ -15,7 +15,7 @@ class MainScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => BottomNavCubit()),
-        BlocProvider(create: (context) => SearchBloc()), 
+        BlocProvider(create: (context) => BookingBloc()), 
       ],
       child: BlocBuilder<BottomNavCubit, int>(
         builder: (context, currentIndex) {

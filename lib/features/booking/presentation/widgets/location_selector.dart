@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_constants.dart';
-import '../../logic/search_bloc.dart';
-import '../../logic/search_event.dart';
-import '../../logic/search_state.dart';
-import '../../../../core/utils/app_utils.dart'; // تأكد من المسار الصحيح
+import '../bloc/booking_bloc.dart';
+import '../bloc/booking_event.dart';
+import '../bloc/booking_state.dart';
+import '../../../../core/utils/app_utils.dart';
 
 class LocationSelector extends StatelessWidget {
   const LocationSelector({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchBloc, SearchState>(
+    // تم التغيير من SearchBloc و SearchState إلى Booking
+    return BlocBuilder<BookingBloc, BookingState>(
       builder: (context, state) => Stack(
         alignment: Alignment.centerLeft,
         children: [
@@ -21,7 +22,7 @@ class LocationSelector extends StatelessWidget {
                 context,
                 Icons.location_on,
                 "من",
-                state.searchModel.fromCity,
+                state.bookingModel.fromCity, // تأكد إذا المتغير بالـ State اسمه bookingModel أو searchModel
                 true,
                 state,
               ),
@@ -30,7 +31,7 @@ class LocationSelector extends StatelessWidget {
                 context,
                 Icons.navigation,
                 "إلى",
-                state.searchModel.toCity,
+                state.bookingModel.toCity,
                 false,
                 state,
               ),
@@ -48,7 +49,7 @@ class LocationSelector extends StatelessWidget {
     String title,
     String city,
     bool isFrom,
-    SearchState state,
+    BookingState state, // تغيير النوع هنا أيضاً
   ) {
     return GestureDetector(
       onTap: () => _showPicker(context, isFrom, state),
@@ -91,7 +92,8 @@ class LocationSelector extends StatelessWidget {
   Widget _swapBtn(BuildContext context) => Positioned(
     left: 10,
     child: GestureDetector(
-      onTap: () => context.read<SearchBloc>().add(SwapCitiesEvent()),
+      // التغيير لـ BookingBloc
+      onTap: () => context.read<BookingBloc>().add(SwapCitiesEvent()),
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: const BoxDecoration(
@@ -103,7 +105,7 @@ class LocationSelector extends StatelessWidget {
     ),
   );
 
-  void _showPicker(BuildContext context, bool isFrom, SearchState state) {
+  void _showPicker(BuildContext context, bool isFrom, BookingState state) { // تغيير النوع هنا أيضاً
     showModalBottomSheet(
       context: context,
       backgroundColor: const Color(0xFF2C2C2E),
@@ -120,9 +122,10 @@ class LocationSelector extends StatelessWidget {
               style: const TextStyle(color: Colors.white, fontFamily: 'Cairo'),
             ),
             onTap: () {
+              // تأكد من اسم المتغير (bookingModel)
               final isDup = isFrom
-                  ? (city == state.searchModel.toCity)
-                  : (city == state.searchModel.fromCity);
+                  ? (city == state.bookingModel.toCity)
+                  : (city == state.bookingModel.fromCity);
 
               if (isDup) {
                 AppUtils.showError(
@@ -131,7 +134,8 @@ class LocationSelector extends StatelessWidget {
                 );
                 return;
               }
-              context.read<SearchBloc>().add(
+              // التغيير لـ BookingBloc
+              context.read<BookingBloc>().add(
                 isFrom ? UpdateFromCityEvent(city) : UpdateToCityEvent(city),
               );
               Navigator.pop(ctx);
